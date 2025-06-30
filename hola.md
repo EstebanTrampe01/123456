@@ -1,14 +1,10 @@
 ```mermaid
 flowchart LR
-    MBR --> SB[Superbloque]
-    SB --> BM[Bitmaps]
-    SB --> TI[Tabla de Inodos]
-    TI --> IN1[Inodo #1]
-    TI --> IN2[Inodo #2]
-    IN1 --> BD1[Bloque de Datos #1]
-    IN2 --> BD2[Bloque de Datos #2]
-    IN2 --> BD3[Bloque de Datos #3]
-    SB --> JR[Journaling]
+    A[Usuario ingresa usuario y contraseña] --> B[NextAuth recibe las credenciales]
+    B --> C[Callback authorize]
+    C --> D[fetch/axios: Petición al backend]
+    D --> E[Backend valida credenciales]
+    E -->|Credenciales correctas| F[Backend responde con token]
+    F --> G[NextAuth guarda el token en sesión/JWT]
+    G --> H[Usuario autenticado, token disponible para el frontend]
 ```
-
----
